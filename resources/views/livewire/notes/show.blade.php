@@ -30,7 +30,7 @@
     <div class="grid grid-cols-1">
         <div class="max-w py-4 rounded mx-1 my-2 flex justify-end relative">
             @foreach($deletedNotes as $index => $note)
-                <div class="w-48 bg-white rounded border border-gray-200 p-2 relative z-{{($deletedNotes->count() - $index)}} left-{{($deletedNotes->count() - $index - 1) * 16}}">
+                <div class="w-48 bg-white rounded border border-gray-200 p-2 relative z-{{($deletedNotes->count() - $index)}}" style="left: {{($deletedNotes->count() - $index - 1) * 16}}px">
                     <button wire:click="restore({{ $note->id }})" class="rounded-full bg-blue-200 p-1 absolute -right-3 -top-3">
                         <x-feathericon-corner-right-up/>
                     </button>

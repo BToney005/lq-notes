@@ -1,5 +1,5 @@
 var zIndexes = {'auto':'auto'};
-for (let i = 0; i < 9999; i++) {
+for (let i = 0; i < 100; i++) {
     zIndexes[i] = i;
 }
 
