@@ -18,7 +18,7 @@
                     <button wire:click="pin({{ $note->id }})" class="rounded-full {{ $note->pinned_flag ? 'bg-blue-200' : 'bg-white'}} p-1 absolute -right-3 -top-3">
                         <x-feathericon-paperclip/>
                     </button>
-                        {{ $note->body }}
+                    <p class="whitespace-pre-line">{{ $note->body }}</p>
                     <button wire:click="delete({{ $note->id }})" class="absolute bottom-1 right-1">
                         <i data-feather="trash-2"></i>
                         <x-feathericon-trash-2/>
@@ -34,7 +34,7 @@
                     <button wire:click="restore({{ $note->id }})" class="rounded-full bg-blue-200 p-1 absolute -right-3 -top-3">
                         <x-feathericon-corner-right-up/>
                     </button>
-                    {{ $note->body }}
+                    <p class="whitespace-pre-line whitespace-nowrap ...">{{ $note->body }}</p>
                 </div>
             @endforeach
         </div>
