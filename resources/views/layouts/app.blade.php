@@ -3,7 +3,7 @@
     @livewireStyles
 </head>
 <body>
-    @yield('content')
+    {{ $content}}
     @livewireScripts
 </body>
 </html>
