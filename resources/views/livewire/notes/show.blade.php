@@ -15,11 +15,11 @@
         <div class="max-w py-4 px-8 bg-white shadow-lg rounded-lg mx-1 my-2">
             @foreach($savedNotes as $note)
                 <div class="rounded border border-gray-200 px-2 pt-2 pb-10 my-4 relative">
-                    <button class="rounded-full {{ $note->pinned_flag ? 'bg-blue-200' : 'bg-white'}} p-1 absolute -right-3 -top-3">
+                    <button wire:click="pin({{ $note->id }})" class="rounded-full {{ $note->pinned_flag ? 'bg-blue-200' : 'bg-white'}} p-1 absolute -right-3 -top-3">
                         <x-feathericon-paperclip/>
                     </button>
                         {{ $note->body }}
-                    <button class="absolute bottom-1 right-1">
+                    <button wire:click="delete({{ $note->id }})" class="absolute bottom-1 right-1">
                         <i data-feather="trash-2"></i>
                         <x-feathericon-trash-2/>
                     </button>
@@ -31,7 +31,7 @@
         <div class="col-start-2 max-w py-4 rounded mx-1 my-2 flex justify-end relative">
             @foreach($deletedNotes as $index => $note)
                 <div class="w-48 bg-white rounded border border-gray-200 p-2 relative z-{{(5 - $index) * 10}} left-{{($deletedNotes->count() - $index - 1) * 16}}">
-                    <button class="rounded-full bg-blue-200 p-1 absolute -right-3 -top-3">
+                    <button wire:click="restore({{ $note->id }})" class="rounded-full bg-blue-200 p-1 absolute -right-3 -top-3">
                         <x-feathericon-corner-right-up/>
                     </button>
                     {{ $note->body }}

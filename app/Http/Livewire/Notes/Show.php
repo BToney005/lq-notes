@@ -30,10 +30,30 @@ class Show extends Component
     }
 
 
+    public function pin(Note $note)
+    {
+        $note->pin();
+        return redirect()->to('/');
+    }
+
+    public function restore($noteId) 
+    {
+        $note = Note::withTrashed()->find($noteId);
+        $note->restore();
+        return redirect()->to('/');
+    }
+
+    public function delete(Note $note)
+    {
+        $note->delete();
+        return redirect()->to('/');
+    }
+
     public function submit() 
     {
         $this->validate();
         Note::create(['body' => $this->body]);
+        return redirect()->to('/');
     }
 
     public function render()
