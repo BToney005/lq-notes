@@ -1,3 +1,8 @@
+var zIndexes = {'auto':'auto'};
+for (let i = 0; i < 9999; i++) {
+    zIndexes[i] = i;
+}
+
 module.exports = {
   purge: [
     './resources/**/*.blade.php',
@@ -7,6 +12,7 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {},
+    zIndex: zIndexes
   },
   variants: {
     extend: {},
