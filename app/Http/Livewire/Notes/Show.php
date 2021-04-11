@@ -9,8 +9,6 @@ use App\Models\Note;
 class Show extends Component
 {
     public $body;
-    public $savedNotes;
-    public $deletedNotes;
 
     protected function rules() {
         return [
@@ -21,12 +19,6 @@ class Show extends Component
     public function mount(SessionManager $session)
     {
         //$session->put("post.{$post->id}.last_viewed", now());
-        $this->savedNotes = Note::orderBy('pinned_flag', 'desc')
-            ->orderBy('id')
-            ->get();
-        $this->deletedNotes = Note::withTrashed()
-            ->whereNotNull('deleted_at')
-            ->get();
     }
 
 
@@ -58,7 +50,13 @@ class Show extends Component
 
     public function render()
     {
-        return view('livewire.notes.show')
+        $savedNotes = Note::orderBy('pinned_flag', 'desc')
+            ->orderBy('id')
+            ->get();
+        $deletedNotes = Note::withTrashed()
+            ->whereNotNull('deleted_at')
+            ->get();
+        return view('livewire.notes.show', compact('savedNotes','deletedNotes'))
             ->slot('content');
     }
 }
