@@ -12,6 +12,7 @@ class NoteSeeder extends Seeder
      */
     public function run()
     {
+        // true: deleted, false: not deleted
         $notes = [
             "This is a test note." => true,
             "It was his hat Mr. Krabs, he was number one!" => false,
