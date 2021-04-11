@@ -16,6 +16,7 @@ class CreateNotesTable extends Migration
         Schema::create('notes', function (Blueprint $table) {
             $table->id();
             $table->string('body');
+            $table->boolean('pinned_flag')->default(false);
             $table->timestamps();
             $table->softDeletes();
         });
